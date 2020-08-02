@@ -1,0 +1,14 @@
+# package directories
+node_modules
+
+# package lock
+package-lock.json
+
+# Mac OS X garbage
+.DS_Store
+
+# PID
+screen.pid
+
+# Save file
+saved-state.json
