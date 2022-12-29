@@ -9,3 +9,6 @@ screen.pid
 
 # Save file
 saved-state.json
+
+# Any mood images above 5000_
+moods/[5-9][0-9][0-9][0-9]_*
