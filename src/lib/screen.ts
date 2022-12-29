@@ -1,6 +1,8 @@
 import nconf from 'nconf'
 import { getSaveFile } from './utilities/get-save-file'
 import { join } from 'node:path'
+import type { MatrixOptions } from 'rpi-led-matrix'
+import { clamp } from 'lodash'
 import { LedMatrix, GpioMapping, Font } from 'rpi-led-matrix'
 import { Control } from './control'
 
@@ -11,6 +13,32 @@ const DEFAULT_FONT = new Font(
   join(process.cwd(), 'node_modules', 'rpi-led-matrix', 'fonts', '6x9.bdf')
 )
 
+const getRows = (envRows?: string): MatrixOptions['rows'] => {
+  const rows = envRows ? Number(envRows) : 0
+  return ([16, 32, 64].includes(rows) ? rows : 16) as MatrixOptions['rows']
+}
+
+const getCols = (envCols?: string): MatrixOptions['cols'] => {
+  const cols = envCols ? Number(envCols) : 0
+  return ([16, 32, 40, 64].includes(cols) ? cols : 16) as MatrixOptions['cols']
+}
+
+const getBrightness = (): number => {
+  const config = nconf.get('control:brightness:value')
+
+  switch (typeof config) {
+    case 'number':
+      return clamp(config, 0, 100)
+
+    case 'string':
+      if (/^\d+$/.test(config.trim())) {
+        return clamp(Number(config.trim()), 0, 100)
+      }
+  }
+
+  return 65
+}
+
 export class Screen extends LedMatrix {
   private controlWait?: NodeJS.Timeout
 
@@ -18,10 +46,10 @@ export class Screen extends LedMatrix {
     super(
       {
         ...LedMatrix.defaultMatrixOptions(),
-        rows: 32,
-        cols: 64,
+        rows: getRows(process.env.LED_HEIGHT),
+        cols: getCols(process.env.LED_WIDTH),
         hardwareMapping: GpioMapping.AdafruitHatPwm,
-        brightness: nconf.get('control:brightness:value') || 65,
+        brightness: getBrightness(),
       },
       {
         ...LedMatrix.defaultRuntimeOptions(),
