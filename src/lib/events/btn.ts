@@ -1,6 +1,5 @@
-'use strict';
-module.exports = {
-  0x100: 'BTN_MISC',
+// BTN
+export const btn: Record<number, string> = {
   0x100: 'BTN_0',
   0x101: 'BTN_1',
   0x102: 'BTN_2',
@@ -11,7 +10,6 @@ module.exports = {
   0x107: 'BTN_7',
   0x108: 'BTN_8',
   0x109: 'BTN_9',
-  0x110: 'BTN_MOUSE',
   0x110: 'BTN_LEFT',
   0x111: 'BTN_RIGHT',
   0x112: 'BTN_MIDDLE',
@@ -20,7 +18,6 @@ module.exports = {
   0x115: 'BTN_FORWARD',
   0x116: 'BTN_BACK',
   0x117: 'BTN_TASK',
-  0x120: 'BTN_JOYSTICK',
   0x120: 'BTN_TRIGGER',
   0x121: 'BTN_THUMB',
   0x122: 'BTN_THUMB2',
@@ -34,7 +31,6 @@ module.exports = {
   0x12a: 'BTN_BASE5',
   0x12b: 'BTN_BASE6',
   0x12f: 'BTN_DEAD',
-  0x130: 'BTN_GAMEPAD',
   0x130: 'BTN_SOUTH',
   0x131: 'BTN_EAST',
   0x132: 'BTN_C',
@@ -50,7 +46,6 @@ module.exports = {
   0x13c: 'BTN_MODE',
   0x13d: 'BTN_THUMBL',
   0x13e: 'BTN_THUMBR',
-  0x140: 'BTN_DIGI',
   0x140: 'BTN_TOOL_PEN',
   0x141: 'BTN_TOOL_RUBBER',
   0x142: 'BTN_TOOL_BRUSH',
@@ -59,22 +54,20 @@ module.exports = {
   0x145: 'BTN_TOOL_FINGER',
   0x146: 'BTN_TOOL_MOUSE',
   0x147: 'BTN_TOOL_LENS',
-  0x148: 'BTN_TOOL_QUINTTAP',	/* Five fingers on trackpad */
+  0x148: 'BTN_TOOL_QUINTTAP' /* Five fingers on trackpad */,
   0x149: 'BTN_STYLUS3',
   0x14a: 'BTN_TOUCH',
   0x14b: 'BTN_STYLUS',
   0x14c: 'BTN_STYLUS2',
   0x14d: 'BTN_TOOL_DOUBLETAP',
   0x14e: 'BTN_TOOL_TRIPLETAP',
-  0x14f: 'BTN_TOOL_QUADTAP',	/* Four fingers on trackpad */
-  0x150: 'BTN_WHEEL',
+  0x14f: 'BTN_TOOL_QUADTAP' /* Four fingers on trackpad */,
   0x150: 'BTN_GEAR_DOWN',
   0x151: 'BTN_GEAR_UP',
   0x220: 'BTN_DPAD_UP',
   0x221: 'BTN_DPAD_DOWN',
   0x222: 'BTN_DPAD_LEFT',
   0x223: 'BTN_DPAD_RIGHT',
-  0x2c0: 'BTN_TRIGGER_HAPPY',
   0x2c0: 'BTN_TRIGGER_HAPPY1',
   0x2c1: 'BTN_TRIGGER_HAPPY2',
   0x2c2: 'BTN_TRIGGER_HAPPY3',
@@ -115,4 +108,4 @@ module.exports = {
   0x2e5: 'BTN_TRIGGER_HAPPY38',
   0x2e6: 'BTN_TRIGGER_HAPPY39',
   0x2e7: 'BTN_TRIGGER_HAPPY40',
-};
+}

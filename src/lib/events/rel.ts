@@ -1,5 +1,5 @@
-'use strict';
-module.exports = {
+// REL
+export const rel: Record<number, string> = {
   0x00: 'REL_X',
   0x01: 'REL_Y',
   0x02: 'REL_Z',
@@ -14,4 +14,4 @@ module.exports = {
   0x0b: 'REL_WHEEL_HI_RES',
   0x0c: 'REL_HWHEEL_HI_RES',
   0x0f: 'REL_MAX',
-};
+}

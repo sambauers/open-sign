@@ -1,5 +1,5 @@
-'use strict';
-module.exports = {
+// LED
+export const led: Record<number, string> = {
   0x00: 'LED_NUML',
   0x01: 'LED_CAPSL',
   0x02: 'LED_SCROLLL',
@@ -12,4 +12,4 @@ module.exports = {
   0x09: 'LED_MAIL',
   0x0a: 'LED_CHARGING',
   0x0f: 'LED_MAX',
-};
+}

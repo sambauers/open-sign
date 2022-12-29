@@ -1,19 +1,47 @@
 {
   "name": "open-sign",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fetch-events": "ts-node src/lib/events/fetch.ts",
+    "regenerate-pnpm-lock": "rm -rf node_modules & rm -rf pnpm-lock.yaml & pnpm install",
+    "build": "rm -rf dist & tsc",
+    "dev": "NODE_ENV=development ts-node src/server.ts",
+    "start": "NODE_ENV=production node dist/server.js"
   },
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "color": "^3.1.2",
-    "forever-monitor": "^3.0.1",
-    "lodash": "^4.17.19",
-    "nconf": "^0.10.0",
-    "rpi-led-matrix": "^1.10.0",
-    "sharp": "^0.25.4"
+    "color": "4.2.3",
+    "forever-monitor": "3.0.3",
+    "lodash": "4.17.21",
+    "nconf": "0.12.0",
+    "rpi-led-matrix": "1.14.0",
+    "sharp": "0.31.3"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "1.0.1",
+    "@types/color": "3.0.3",
+    "@types/eslint": "8.4.10",
+    "@types/forever-monitor": "1.7.6",
+    "@types/lodash": "4.14.191",
+    "@types/nconf": "0.10.3",
+    "@types/node": "18.11.18",
+    "@types/prettier": "2.7.2",
+    "@types/sharp": "0.31.0",
+    "@typescript-eslint/eslint-plugin": "5.47.1",
+    "@typescript-eslint/parser": "5.47.1",
+    "eslint": "8.30.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.8.1",
+    "ts-node": "10.9.1",
+    "typescript": "4.9.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "chokidar": "3.5.3"
+    }
   }
 }

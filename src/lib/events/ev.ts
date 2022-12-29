@@ -1,5 +1,5 @@
-'use strict';
-module.exports = {
+// EV
+export const ev: Record<number, string> = {
   0x00: 'EV_SYN',
   0x01: 'EV_KEY',
   0x02: 'EV_REL',
@@ -13,4 +13,4 @@ module.exports = {
   0x16: 'EV_PWR',
   0x17: 'EV_FF_STATUS',
   0x1f: 'EV_MAX',
-};
+}
