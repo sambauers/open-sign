@@ -156,11 +156,20 @@ sudo crotab -e
 Then setup start and stop actions like:
 
 ```sh
+# Ensure pm2 can be found on your PATH (adjust as neccesary depending on your NVM/NPM binaries path)
+PATH=$PATH:/root/.nvm/versions/node/v18.12.1/bin
+
 # Turn the sign on at 8:30 AM, Monday to Friday
 30 8 * * 1-5 pm2 sendSignal SIGUSR1 open-sign
 
 # Turn the sign off at 4:30 PM, Monday to Friday
 30 16 * * 1-5 pm2 sendSignal SIGUSR2 open-sign
+```
+
+You will probably want to restart the `cron` service after editing:
+
+```sh
+/etc/init.d/cron restart
 ```
 
 ## Adding more images
