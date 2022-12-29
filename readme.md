@@ -1,3 +1,5 @@
+![A demonstration of the Open Sign application](https://raw.githubusercontent.com/sambauers/assets/main/open-sign/readme/open-sign-demo.gif)
+
 # Open Sign
 
 Open Sign is a small NodeJS application that displays pixel art on a LED matrix.
@@ -159,4 +161,25 @@ Then setup start and stop actions like:
 
 # Turn the sign off at 4:30 PM, Monday to Friday
 30 16 * * 1-5 pm2 sendSignal SIGUSR2 open-sign
+```
+
+## Adding more images
+
+Adding more images is easy.
+
+Simply create new images in `PNG` format at the correct dimensions for your LED matrix and drop them into the `moods` directory.
+
+The images are loaded in alphabetical order. You can force the order of the images by utilising a number prefix. See the file names in the `moods` directory for an example of this.
+
+The images in the moods diroctory that come with the application are 64x32 pixels.
+
+Transparent PNGs are supported (the transparency is treated as black).
+
+If you add new images, they won't be registered by the application until you restart the application.
+
+```sh
+sudo -s
+cd /home/pi/open-sign
+nvm use
+pm2 restart ecosystem.config.js --env production
 ```
