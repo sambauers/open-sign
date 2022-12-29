@@ -6,7 +6,7 @@ The hardware required is:
 
 * Raspberry Pi - *probably best with at least a Raspberry Pi 3 Model B Rev 1.2*
 * An RGB LED Matrix HAT for Raspberry Pi - *I use the [RGB Matrix HAT + RTC](https://www.adafruit.com/product/2345) from Adafruit, or [you can wire it up yourself](https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/wiring.md)*
-* An RGB LED Matrix board - *I use this 64x32 pixel matrix from Adafruit, but any board that complies with the [RPI RGB LED Matrix library limitations](https://github.com/hzeller/rpi-rgb-led-matrix) should work - note: that currently only one board at a time is supported or tested, so no chaining of boards (adding support should be pretty trivial, but I don't have a second board to test this)*
+* An RGB LED Matrix board - *I use [this 64x32 pixel matrix](https://www.adafruit.com/product/2277) from Adafruit, but any board that complies with the [RPI RGB LED Matrix library limitations](https://github.com/hzeller/rpi-rgb-led-matrix) should work - note: that currently only one board at a time is supported or tested, so no chaining of boards (adding support should be pretty trivial, but I don't have a second board to test this)*
 * A USB mouse to control the display - *use a two button mouse with a scrollwheel to get the maximum functionality*
 
 ## Installation
