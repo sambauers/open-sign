@@ -156,7 +156,8 @@ sudo crotab -e
 Then setup start and stop actions like:
 
 ```sh
-# Ensure pm2 can be found on your PATH (adjust as neccesary depending on your NVM/NPM binaries path)
+# Ensure pm2 can be found on your PATH - adjust as
+# neccesary depending on your NVM/NPM binaries path
 PATH=$PATH:/root/.nvm/versions/node/v18.12.1/bin
 
 # Turn the sign on at 8:30 AM, Monday to Friday
