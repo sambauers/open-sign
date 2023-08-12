@@ -2,7 +2,7 @@ import nconf from 'nconf'
 import { getSaveFile } from './utilities/get-save-file'
 import { join } from 'node:path'
 import type { MatrixOptions } from 'rpi-led-matrix'
-import { clamp } from 'lodash'
+import clamp from 'lodash/clamp'
 import { LedMatrix, GpioMapping, Font } from 'rpi-led-matrix'
 import { Control } from './control'
 

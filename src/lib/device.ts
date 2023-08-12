@@ -1,13 +1,13 @@
 import type { ReadStream } from 'node:fs'
 import { readdirSync, createReadStream } from 'node:fs'
 import EventEmitter from 'node:events'
-import _ from 'lodash'
+import isInteger from 'lodash/isInteger'
 
 const bufferChunk = (buffer: string | Buffer, chunk_size: number): Buffer[] => {
   if (!Buffer.isBuffer(buffer)) {
     throw new TypeError('Buffer is required.')
   }
-  if (!_.isInteger(chunk_size) || chunk_size < 0) {
+  if (!isInteger(chunk_size) || chunk_size < 0) {
     throw new TypeError('Chunk size should be a positve number.')
   }
 

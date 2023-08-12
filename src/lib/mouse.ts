@@ -1,4 +1,5 @@
-import _ from 'lodash'
+import clamp from 'lodash/clamp'
+import isInteger from 'lodash/isInteger'
 import type { DeviceEventRaw, DeviceEvent } from './device'
 import { Device } from './device'
 import { events } from './events'
@@ -80,19 +81,19 @@ export class Mouse extends Device {
     dx?: number
     dy?: number
   }) {
-    if (!_.isInteger(x) && typeof dx === 'number' && _.isInteger(dx)) {
+    if (!isInteger(x) && typeof dx === 'number' && isInteger(dx)) {
       x = this.raw.x + dx
     }
-    if (!_.isInteger(y) && typeof dy === 'number' && _.isInteger(dy)) {
+    if (!isInteger(y) && typeof dy === 'number' && isInteger(dy)) {
       y = this.raw.y + dy
     }
 
     const tracking = (10 + this.tracking) / 10
-    if (typeof x === 'number' && _.isInteger(x)) {
+    if (typeof x === 'number' && isInteger(x)) {
       this.raw.x = x
       this.x = this.tracked.x = Math.round(x * tracking)
     }
-    if (typeof y === 'number' && _.isInteger(y)) {
+    if (typeof y === 'number' && isInteger(y)) {
       this.raw.y = y
       this.y = this.tracked.y = Math.round(y * tracking)
     }
@@ -100,7 +101,7 @@ export class Mouse extends Device {
 
   setMouseTracking(tracking = 0) {
     if (typeof tracking === 'number') {
-      tracking = _.clamp(tracking, -10, 10)
+      tracking = clamp(tracking, -10, 10)
       this.tracking = Math.round(tracking)
       this.setMousePosition(this.raw)
     }

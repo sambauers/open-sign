@@ -3,7 +3,9 @@ import { getSaveFile } from './utilities/get-save-file'
 import { readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import EventEmitter from 'node:events'
-import _ from 'lodash'
+import toInteger from 'lodash/toInteger'
+import compact from 'lodash/compact'
+import clamp from 'lodash/clamp'
 import sharp from 'sharp'
 import color from 'color'
 
@@ -64,10 +66,10 @@ export class Pixel {
       .raw()
       .toBuffer({ resolveWithObject: true })
 
-    const top = _.toInteger(position.top)
-    const left = _.toInteger(position.left)
-    const width = _.toInteger(position.width)
-    const height = _.toInteger(position.height)
+    const top = toInteger(position.top)
+    const left = toInteger(position.left)
+    const width = toInteger(position.width)
+    const height = toInteger(position.height)
 
     if (!top && !left && !width && !height) {
       this.bufferCache = png.data
@@ -146,7 +148,7 @@ export class Pixels {
     this.filePaths = readdirSync(this.directoryPath) || []
     this.pixels = [
       ...(hasBlank ? [new Blank()] : []),
-      ..._.compact(
+      ...compact(
         this.filePaths.map((filePath) => {
           if (/\.png$/.test(filePath)) {
             return new Pixel(

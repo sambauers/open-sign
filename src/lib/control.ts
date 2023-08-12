@@ -2,7 +2,7 @@ import nconf from 'nconf'
 import { getSaveFile } from './utilities/get-save-file'
 import { join } from 'node:path'
 import EventEmitter from 'node:events'
-import _ from 'lodash'
+import clamp from 'lodash/clamp'
 import { Pixel } from './pixels'
 
 nconf.file({ file: getSaveFile() })
@@ -57,7 +57,7 @@ export class Control {
   }
 
   setValue(newValue: number) {
-    newValue = _.clamp(newValue, this.lower, this.upper)
+    newValue = clamp(newValue, this.lower, this.upper)
     if (newValue !== this.value) {
       const old_value = this.value
       this.value = newValue
