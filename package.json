@@ -18,26 +18,24 @@
     "lodash": "4.17.21",
     "nconf": "0.12.0",
     "rpi-led-matrix": "1.14.0",
-    "sharp": "0.31.3"
+    "sharp": "0.32.4"
   },
   "devDependencies": {
-    "@tsconfig/node18": "1.0.1",
+    "@tsconfig/node18": "18.2.0",
     "@types/color": "3.0.3",
-    "@types/eslint": "8.4.10",
+    "@types/eslint": "8.44.2",
     "@types/forever-monitor": "1.7.6",
-    "@types/lodash": "4.14.191",
+    "@types/lodash": "4.14.197",
     "@types/nconf": "0.10.3",
-    "@types/node": "18.11.18",
-    "@types/prettier": "2.7.2",
-    "@types/sharp": "0.31.0",
-    "@typescript-eslint/eslint-plugin": "5.47.1",
-    "@typescript-eslint/parser": "5.47.1",
-    "eslint": "8.30.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.8.1",
+    "@types/node": "18.17.5",
+    "@typescript-eslint/eslint-plugin": "6.3.0",
+    "@typescript-eslint/parser": "6.3.0",
+    "eslint": "8.47.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "prettier": "3.0.1",
     "ts-node": "10.9.1",
-    "typescript": "4.9.4"
+    "typescript": "5.1.6"
   },
   "pnpm": {
     "overrides": {

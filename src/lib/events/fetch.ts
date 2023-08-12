@@ -118,11 +118,11 @@ fetchEvents()
 console.log(`Evaluating index`)
 
 const lines = PREFIXES.map(
-  (prefix) => `import { ${camelCase(prefix)} } from './${kebabCase(prefix)}'`
+  (prefix) => `import { ${camelCase(prefix)} } from './${kebabCase(prefix)}'`,
 )
 lines.push(
   '',
-  'export const events: Record<string, Record<number, string>> = {'
+  'export const events: Record<string, Record<number, string>> = {',
 )
 PREFIXES.forEach((prefix) => lines.push(`  ${camelCase(prefix)},`))
 lines.push('}', '')

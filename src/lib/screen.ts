@@ -10,7 +10,7 @@ nconf.file({ file: getSaveFile() })
 
 const DEFAULT_FONT = new Font(
   'default',
-  join(process.cwd(), 'node_modules', 'rpi-led-matrix', 'fonts', '6x9.bdf')
+  join(process.cwd(), 'node_modules', 'rpi-led-matrix', 'fonts', '6x9.bdf'),
 )
 
 const getRows = (envRows?: string): MatrixOptions['rows'] => {
@@ -54,14 +54,14 @@ export class Screen extends LedMatrix {
       {
         ...LedMatrix.defaultRuntimeOptions(),
         gpioSlowdown: 3,
-      }
+      },
     )
   }
 
   async control(
     control: Control,
     action: (value: number) => void,
-    reset: () => void
+    reset: () => void,
   ) {
     if (this.controlWait) {
       clearTimeout(this.controlWait)
@@ -85,7 +85,7 @@ export class Screen extends LedMatrix {
       this.drawBuffer(
         iconBuffer,
         left + control.icon.width,
-        top + control.icon.height
+        top + control.icon.height,
       )
     }
 
@@ -95,7 +95,7 @@ export class Screen extends LedMatrix {
         String(control.value),
         left + control.icon.width + 1,
         top + 2,
-        -1
+        -1,
       )
       .fgColor(0x134f5c)
       .drawText(
@@ -106,7 +106,7 @@ export class Screen extends LedMatrix {
         }),
         37,
         top + 2,
-        -1
+        -1,
       )
       .fill(1, top + height - 2, width, top + height - 1)
 
@@ -115,7 +115,7 @@ export class Screen extends LedMatrix {
         1,
         top + height - 2,
         lineLength,
-        top + height - 1
+        top + height - 1,
       )
     }
 

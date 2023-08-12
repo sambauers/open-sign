@@ -45,7 +45,7 @@ export class Pixel {
     filePath: string,
     width: number,
     height: number,
-    backgroundColor?: string
+    backgroundColor?: string,
   ) {
     this.filePath = filePath
     this.width = width
@@ -54,7 +54,7 @@ export class Pixel {
   }
 
   async buffer(
-    position: BufferPosition = { top: 0, left: 0, width: 0, height: 0 }
+    position: BufferPosition = { top: 0, left: 0, width: 0, height: 0 },
   ) {
     if (this.bufferCache) {
       return this.bufferCache
@@ -138,7 +138,7 @@ export class Pixels {
     width: number,
     height: number,
     backgroundColor?: string,
-    hasBlank = false
+    hasBlank = false,
   ) {
     this.name = name
     this.directoryPath = directoryPath
@@ -155,16 +155,16 @@ export class Pixels {
               join(this.directoryPath, filePath),
               this.width,
               this.height,
-              this.backgroundColor
+              this.backgroundColor,
             )
           }
           return false
-        })
+        }),
       ),
     ]
 
-    const savedIndex = nconf.get(`pixel:${this.name}:index`)
-    this.currentIndex = savedIndex || 0
+    const savedIndex = nconf.get(`pixel:${this.name}:index`) ?? 0
+    this.currentIndex = clamp(toInteger(savedIndex), 0, this.pixels.length - 1)
 
     this.events = new EventEmitter()
   }

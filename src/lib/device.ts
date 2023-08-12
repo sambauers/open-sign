@@ -114,7 +114,7 @@ export class Device {
               value: chunk.readInt32LE(12),
             }
             this.streamEvents.emit('event', ev)
-          })
+          }),
         )
         .on('open', (fd) => {
           this.streamEvents.emit('open', fd)

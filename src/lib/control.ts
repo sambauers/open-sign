@@ -27,7 +27,7 @@ export class Control {
   constructor(
     name: string,
     iconFile: string,
-    { lower, upper, stepSize, startAt }: ControlRange
+    { lower, upper, stepSize, startAt }: ControlRange,
   ) {
     this.name = name
     this.icon = new Pixel(join(process.cwd(), 'controls', iconFile), 12, 12)

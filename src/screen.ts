@@ -85,7 +85,7 @@ try {
     await screen.control(
       brightness,
       screen.brightness.bind(screen),
-      moods.touch.bind(moods)
+      moods.touch.bind(moods),
     )
   })
 
