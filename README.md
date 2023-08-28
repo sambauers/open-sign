@@ -141,6 +141,37 @@ The application will start on a blank screen. Click the left mouse button to dis
 * Scrollwheel up - increase brightness
 * Scrollwheel down - decrease brightness
 
+## Starting on boot
+
+To start the sign automatically on boot, you can use PM2's built-in startup
+script generator.
+
+Switch to root and run the `pm2 startup` command:
+
+```sh
+sudo -s
+pm2 startup
+```
+
+Most times it will install the startup script for you, but check the PM2
+documentation if you get stuck.
+
+Ensure you are in the correct directory, and ensure the application is started:
+
+```sh
+cd /home/pi/open-sign
+pm2 start ecosystem.config.js --env production
+```
+
+Then simply "save" the list of running PM2 services to ensure they start on
+boot:
+
+```sh
+pm2 save
+```
+
+The sign should now launch automatically on boot.
+
 ## Setting up run schedules
 
 You may want to start and stop the sign at certain times of the day or week. This can be achieved by configuring `crontab`.
@@ -158,16 +189,30 @@ Then setup start and stop actions like:
 ```sh
 # Ensure pm2 can be found on your PATH - adjust as
 # neccesary depending on your NVM/NPM binaries path
-PATH=$PATH:/root/.nvm/versions/node/v18.12.1/bin
+PATH=$PATH:/root/.nvm/versions/node/v18.17.1/bin
 
 # Turn the sign on at 8:30 AM, Monday to Friday
 30 8 * * 1-5 pm2 sendSignal SIGUSR1 open-sign
 
 # Turn the sign off at 4:30 PM, Monday to Friday
 30 16 * * 1-5 pm2 sendSignal SIGUSR2 open-sign
+
+# In case of power failure and reboot outside these hours, turn off the sign every 15 minutes outside those hours
+
+# Monday to Friday before 8:30 AM
+*/15 0-7 * * 1-5 pm2 sendSignal SIGUSR2 open-sign
+0-25/15 8 * * 1-5 pm2 sendSignal SIGUSR2 open-sign
+
+# Monday to Friday after 4:30 PM
+35-55/15 16 * * 1-5 pm2 sendSignal SIGUSR2 open-sign
+*/15 17-23 * * 1-5 pm2 sendSignal SIGUSR2 open-sign
+
+# Saturday and Sunday
+*/15 * * * 6 pm2 sendSignal SIGUSR2 open-sign
+*/15 * * * 0 pm2 sendSignal SIGUSR2 open-sign
 ```
 
-You will probably want to restart the `cron` service after editing:
+You may need to restart the `cron` service after editing:
 
 ```sh
 /etc/init.d/cron restart
