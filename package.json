@@ -18,7 +18,7 @@
     "lodash": "4.17.21",
     "nconf": "0.12.0",
     "rpi-led-matrix": "1.14.0",
-    "sharp": "0.32.4"
+    "sharp": "0.32.6"
   },
   "devDependencies": {
     "@tsconfig/node18": "18.2.0",
