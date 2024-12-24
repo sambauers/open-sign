@@ -1,6 +1,6 @@
 {
   "name": "open-sign",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "",
   "packageManager": "pnpm@9.15.1",
   "scripts": {
@@ -22,13 +22,13 @@
     "sharp": "0.32.6"
   },
   "devDependencies": {
-    "@tsconfig/node18": "18.2.0",
+    "@tsconfig/node20": "20.1.4",
     "@types/color": "3.0.3",
     "@types/eslint": "8.44.2",
     "@types/forever-monitor": "1.7.6",
     "@types/lodash": "4.14.197",
     "@types/nconf": "0.10.3",
-    "@types/node": "18.17.5",
+    "@types/node": "20.17.10",
     "@typescript-eslint/eslint-plugin": "6.3.0",
     "@typescript-eslint/parser": "6.3.0",
     "eslint": "8.47.0",
