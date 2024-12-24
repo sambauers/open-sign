@@ -2,6 +2,7 @@
   "name": "open-sign",
   "version": "2.0.1",
   "description": "",
+  "packageManager": "pnpm@9.15.1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "fetch-events": "ts-node src/lib/events/fetch.ts",
