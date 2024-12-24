@@ -4,6 +4,7 @@
   "description": "",
   "packageManager": "pnpm@9.15.1",
   "scripts": {
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "fetch-events": "ts-node src/lib/events/fetch.ts",
     "regenerate-pnpm-lock": "rm -rf node_modules & rm -rf pnpm-lock.yaml & pnpm install",
