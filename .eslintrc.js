@@ -15,6 +15,10 @@ const config = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  ignorePatterns: [
+    '/src/lib/events/*.ts',
+    '!/src/lib/events/fetch.ts',
+  ],
   rules: {
     '@typescript-eslint/no-unused-vars': [
       'error',
