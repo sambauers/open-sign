@@ -29,7 +29,7 @@
     "@types/lodash": "4.14.197",
     "@types/nconf": "0.10.3",
     "@types/node": "20.17.10",
-    "@typescript-eslint/eslint-plugin": "6.3.0",
+    "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.3.0",
     "eslint": "8.47.0",
     "eslint-config-prettier": "9.1.0",
