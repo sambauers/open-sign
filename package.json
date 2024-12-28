@@ -25,7 +25,7 @@
     "@tsconfig/node20": "20.1.4",
     "@types/color": "4.2.0",
     "@types/eslint": "8.44.2",
-    "@types/forever-monitor": "1.7.6",
+    "@types/forever-monitor": "1.7.9",
     "@types/lodash": "4.14.197",
     "@types/nconf": "0.10.3",
     "@types/node": "20.17.10",

@@ -40,8 +40,8 @@ importers:
         specifier: 8.44.2
         version: 8.44.2
       '@types/forever-monitor':
-        specifier: 1.7.6
-        version: 1.7.6
+        specifier: 1.7.9
+        version: 1.7.9
       '@types/lodash':
         specifier: 4.14.197
         version: 4.14.197
@@ -277,8 +277,8 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
-  '@types/forever-monitor@1.7.6':
-    resolution: {integrity: sha512-QrEuaA2FwV/EKII3ZFy12LtZ1qyjwXYmTd9u4jTZBeF3CaVsjLlk1vmlLdfSL3TXdSdFt8BsGyLcsRQ9QP6e5Q==}
+  '@types/forever-monitor@1.7.9':
+    resolution: {integrity: sha512-BRRsunj7eOuKtReLN2mxchkLAQx8WEGCKb3muwMqOV35u8FpjvW57ECEUorgyIulKj+gAGgbwiLn7p4RdwQs2Q==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -1173,7 +1173,7 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
-  '@types/forever-monitor@1.7.6':
+  '@types/forever-monitor@1.7.9':
     dependencies:
       '@types/node': 20.17.10
 
