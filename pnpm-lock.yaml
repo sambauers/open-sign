@@ -21,8 +21,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       nconf:
-        specifier: 0.12.0
-        version: 0.12.0
+        specifier: 0.12.1
+        version: 0.12.1
       rpi-led-matrix:
         specifier: 1.14.0
         version: 1.14.0
@@ -752,8 +752,8 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  nconf@0.12.0:
-    resolution: {integrity: sha512-T3fZPw3c7Dfrz8JBQEbEcZJ2s8f7cUMpKuyBtsGQe0b71pcXx6gNh4oti2xh5dxB+gO9ufNfISBlGvvWtfyMcA==}
+  nconf@0.12.1:
+    resolution: {integrity: sha512-p2cfF+B3XXacQdswUYWZ0w6Vld0832A/tuqjLBu3H1sfUcby4N2oVbGhyuCkZv+t3iY3aiFEj7gZGqax9Q2c1w==}
     engines: {node: '>= 0.4.0'}
 
   node-addon-api@3.2.1:
@@ -1680,7 +1680,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  nconf@0.12.0:
+  nconf@0.12.1:
     dependencies:
       async: 3.2.6
       ini: 2.0.0
