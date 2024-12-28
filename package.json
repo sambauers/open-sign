@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "20.1.4",
-    "@types/color": "3.0.3",
+    "@types/color": "4.2.0",
     "@types/eslint": "8.44.2",
     "@types/forever-monitor": "1.7.6",
     "@types/lodash": "4.14.197",
