@@ -46,8 +46,8 @@ importers:
         specifier: 4.14.197
         version: 4.14.197
       '@types/nconf':
-        specifier: 0.10.3
-        version: 0.10.3
+        specifier: 0.10.7
+        version: 0.10.7
       '@types/node':
         specifier: 20.17.10
         version: 20.17.10
@@ -286,8 +286,8 @@ packages:
   '@types/lodash@4.14.197':
     resolution: {integrity: sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==}
 
-  '@types/nconf@0.10.3':
-    resolution: {integrity: sha512-leyIuBk/rMIp9114FlPRkc/cQG+/JzCz1Afx3BD+CwK2ep3ZRxoC843V1rqnE2pC/jRRjANWhuVBEn4clCwlug==}
+  '@types/nconf@0.10.7':
+    resolution: {integrity: sha512-ltJgbQX0XgjkeDrz0anTCXLBLatppWYFCxp88ILEwybfAuyNWr0Qb+ceFFqZ0VDR8fguEjr0hH37ZF+AF4gsxw==}
 
   '@types/node@20.17.10':
     resolution: {integrity: sha512-/jrvh5h6NXhEauFFexRin69nA0uHJ5gwk4iDivp/DeoEua3uwCUto6PC86IpRITBOs4+6i2I56K5x5b6WYGXHA==}
@@ -1181,7 +1181,7 @@ snapshots:
 
   '@types/lodash@4.14.197': {}
 
-  '@types/nconf@0.10.3': {}
+  '@types/nconf@0.10.7': {}
 
   '@types/node@20.17.10':
     dependencies:
