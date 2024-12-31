@@ -28,20 +28,35 @@ export const abs: Record<number, string> = {
   0x21: 'ABS_PROFILE',
   0x28: 'ABS_MISC',
   0x2e: 'ABS_RESERVED',
-  0x2f: 'ABS_MT_SLOT' /* MT slot being modified */,
-  0x30: 'ABS_MT_TOUCH_MAJOR' /* Major axis of touching ellipse */,
-  0x31: 'ABS_MT_TOUCH_MINOR' /* Minor axis (omit if circular) */,
-  0x32: 'ABS_MT_WIDTH_MAJOR' /* Major axis of approaching ellipse */,
-  0x33: 'ABS_MT_WIDTH_MINOR' /* Minor axis (omit if circular) */,
-  0x34: 'ABS_MT_ORIENTATION' /* Ellipse orientation */,
-  0x35: 'ABS_MT_POSITION_X' /* Center X touch position */,
-  0x36: 'ABS_MT_POSITION_Y' /* Center Y touch position */,
-  0x37: 'ABS_MT_TOOL_TYPE' /* Type of touching device */,
-  0x38: 'ABS_MT_BLOB_ID' /* Group a set of packets as a blob */,
-  0x39: 'ABS_MT_TRACKING_ID' /* Unique ID of initiated contact */,
-  0x3a: 'ABS_MT_PRESSURE' /* Pressure on contact area */,
-  0x3b: 'ABS_MT_DISTANCE' /* Contact hover distance */,
-  0x3c: 'ABS_MT_TOOL_X' /* Center X tool position */,
-  0x3d: 'ABS_MT_TOOL_Y' /* Center Y tool position */,
+  // MT slot being modified
+  0x2f: 'ABS_MT_SLOT',
+  // Major axis of touching ellipse
+  0x30: 'ABS_MT_TOUCH_MAJOR',
+  // Minor axis (omit if circular)
+  0x31: 'ABS_MT_TOUCH_MINOR',
+  // Major axis of approaching ellipse
+  0x32: 'ABS_MT_WIDTH_MAJOR',
+  // Minor axis (omit if circular)
+  0x33: 'ABS_MT_WIDTH_MINOR',
+  // Ellipse orientation
+  0x34: 'ABS_MT_ORIENTATION',
+  // Center X touch position
+  0x35: 'ABS_MT_POSITION_X',
+  // Center Y touch position
+  0x36: 'ABS_MT_POSITION_Y',
+  // Type of touching device
+  0x37: 'ABS_MT_TOOL_TYPE',
+  // Group a set of packets as a blob
+  0x38: 'ABS_MT_BLOB_ID',
+  // Unique ID of initiated contact
+  0x39: 'ABS_MT_TRACKING_ID',
+  // Pressure on contact area
+  0x3a: 'ABS_MT_PRESSURE',
+  // Contact hover distance
+  0x3b: 'ABS_MT_DISTANCE',
+  // Center X tool position
+  0x3c: 'ABS_MT_TOOL_X',
+  // Center Y tool position
+  0x3d: 'ABS_MT_TOOL_Y',
   0x3f: 'ABS_MAX',
 }

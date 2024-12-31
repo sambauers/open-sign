@@ -13,82 +13,97 @@ The hardware required is:
 
 ## Installation
 
-The application requires NodeJS v18, and setup on the Raspberry Pi can be a bit tricky.
+The application requires NodeJS v20, and setup on the Raspberry Pi can be a bit tricky.
 
 Assuming you have Raspian installed on your Raspberry Pi, you'll need to make sure that your RGB LED Matrix HAT is installed properly and working - this could include messing around with `raspi-config` settings, check the instructions for your particular HAT.
 
 Once things are wired up and you are confident that your Pi, HAT, and LED matrix are working, you can start installing…
 
-Go to the `pi` user home directory and make a new directory for the application with write permission open to anyone:
+First install `fnm` - we'll install it once for all users.
 
 ```sh
-cd /home/pi
-mkdir open-sign
-chmod 777 open-sign
+# switch to root
+sudo -i
+
+# make a new directory for `fnm`
+mkdir /opt/fnm
+
+# install `fnm` in the new directory, but skip installation of the user shell script
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "/opt/fnm" --skip-shell
 ```
 
-Get a copy of this code into that new directory, it's generally a good idea to clone the Git repository:
+Create an `fnm` initialisation script for all users.
 
 ```sh
+nano /etc/profile.d/fnm.sh
+```
+
+Add the follwing contents to that script:
+
+```sh
+# FNM initialization script
+FNM_PATH='/opt/fnm'
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  if [ ! -t 0 ]; then
+    eval "`fnm env --fnm-dir=\"$FNM_PATH\"`"
+  else
+    eval "`fnm env --fnm-dir=\"$FNM_PATH\" --use-on-cd --version-file-strategy=recursive --resolve-engines`"
+    eval "`fnm completions`"
+  fi
+fi
+```
+
+Continuing as the root user, create a directory to install `open-sign`:
+
+```sh
+# make a new directory for `open-sign`
+mkdir /opt/open-sign
+```
+
+Get a copy of the `open-sign` code into that new directory, it's generally a good idea to clone the Git repository:
+
+```sh
+cd /opt
 git clone https://github.com/sambauers/open-sign.git open-sign
 ```
 
-Install NVM for the `pi` user using [their instructions](https://github.com/nvm-sh/nvm).
+Install FNM for your user using [their instructions](https://github.com/Schniz/fnm?tab=readme-ov-file#installation).
 
-Once done install NodeJS 18 and make it the default:
+Once done, install the NodeJS version required by the app and make it the default:
 
 ```sh
-nvm install lts/hydrogen
-nvm alias default lts/hydrogen
-nvm use default
+cd /opt/open-sign
+
+# install the specified node version (if not prompted)
+fnm install
+
+# make the specified node version the default
+fnm alias `fnm current` default
+
+# make sure the specified version is in use
+fnm use
 ```
 
-Now update `npm` and `corepack`, and install `pnpm`:
+Ensure `npm` and `corepack` are up-to-date - note that we are using `npm` for global packages:
 
 ```sh
-npm -g install npm
-npm -g install corepack
-npm -g install pnpm
+npm -g install npm corepack
 ```
 
-Now go into the application directory and install dependencies (this will take a while):
+Ensure `corepack` is enabled so we can automatically use `pnpm`. `fnm` is supposed to automatically do this for us, but it doesn't hurt to make sure:
 
 ```sh
-cd open-sign
+corepack enable
+```
+
+Now install dependencies (this will take a while) - accept any prompt asking you if you want to install `pnpm`:
+
+```sh
 pnpm install
 ```
 
-Since accessing the LED Matrix hardware requires root privileges, we need to actually launch the application as `root`, so you'll need to repeat some of the steps as `root`, switch to the `root` user using `sudo`:
-
-```sh
-sudo -s
-```
-
-Make sure you are in the correct directory since you switched to root:
-
-```sh
-cd /home/pi/open-sign
-```
-
-Install NVM for the `root` user using [their instructions](https://github.com/nvm-sh/nvm).
-
-Once done install NodeJS 18 again for `root` and make it the default:
-
-```sh
-nvm install lts/hydrogen
-nvm alias default lts/hydrogen
-nvm use default
-```
-
-Now update `npm` and `corepack`, and install `pnpm`:
-
-```sh
-npm -g install npm
-npm -g install corepack
-npm -g install pnpm
-```
-
-Additionally, install `pm2`:
+Additionally, install `pm2` - note that this is being installed globally using `npm`:
 
 ```sh
 npm -g install pm2
@@ -96,39 +111,58 @@ npm -g install pm2
 
 ## Configuration
 
-Switch back to the `pi` user by `exit` ing from `sudo` and ensure you are in the correct directory:
+Open `ecosystem.config.js` and adjust the environment variables `LED_HEIGHT` and `LED_WIDTH` as needed.
 
 ```sh
-exit
-cd /home/pi/open-sign
-```
+# switch to root
+sudo -i
 
-Now open `ecosystem.config.js` and adjust the environment variables `LED_HEIGHT` and `LED_WIDTH` as needed.
+# go to `open-sign` directory
+cd /opt/open-sign
+
+# open the ecosyustem file for editing
+nano ecosystem.config.js
+```
 
 ## Build
 
-Remaining as the `pi` user, ensure the correct Node version is being used and build the application:
+As root, ensure the correct Node version is being used and build the application:
 
 ```sh
-nvm use
+# switch to root
+sudo -i
+
+# go to `open-sign` directory
+cd /opt/open-sign
+
+# ensure the right node version is in use
+fnm use
+
+# build the application
 pnpm build
 ```
 
-The compiled application should now be in the `dist` directory.
+The compiled application should now be in the `/opt/open-sign/dist` directory.
 
 ## First run
 
-Switch back to the `root` user and ensure you are in the correct directory:
+Switch to the `root` user and ensure you are in the correct directory:
 
 ```sh
-sudo -s
-cd /home/pi/open-sign
+# switch to root
+sudo -i
+
+# go to `open-sign` directory
+cd /opt/open-sign
 ```
 
 Ensure the correct Node version is being used, and then start the application using `pm2`:
 
 ```sh
-nvm use
+# ensure the right node version is in use
+fnm use
+
+# start pm2 process manager
 pm2 start ecosystem.config.js --env production
 ```
 
@@ -149,17 +183,26 @@ script generator.
 Switch to root and run the `pm2 startup` command:
 
 ```sh
-sudo -s
+# switch to root
+sudo -i
+
+# add pm2 startup script
 pm2 startup
 ```
 
 Most times it will install the startup script for you, but check the PM2
 documentation if you get stuck.
 
-Ensure you are in the correct directory, and ensure the application is started:
+Now you can save the current pm2 state to config. Ensure you are in the correct directory, and ensure the application is started:
 
 ```sh
-cd /home/pi/open-sign
+# go to `open-sign` directory
+cd /opt/open-sign
+
+# ensure the right node version is in use
+fnm use
+
+# start pm2 process manager
 pm2 start ecosystem.config.js --env production
 ```
 
@@ -167,10 +210,18 @@ Then simply "save" the list of running PM2 services to ensure they start on
 boot:
 
 ```sh
+# check the processes currently being managed by pm2
+pm2 list
+
+# save current pm2 state to config
 pm2 save
 ```
 
-The sign should now launch automatically on boot.
+The sign should now launch automatically on boot. If you ever want to stop running automatically on boot, you can remove the init script:
+
+```sh
+pm2 unstartup systemd
+```
 
 ## Setting up run schedules
 
@@ -188,8 +239,8 @@ Then setup start and stop actions like:
 
 ```sh
 # Ensure pm2 can be found on your PATH - adjust as
-# neccesary depending on your NVM/NPM binaries path
-PATH=$PATH:/root/.nvm/versions/node/v18.17.1/bin
+# neccesary depending on your FNM/NPM binaries path
+PATH=/opt/fnm/node-versions/v20.18.1/installation/bin:$PATH
 
 # Turn the sign on at 8:30 AM, Monday to Friday
 30 8 * * 1-5 pm2 sendSignal SIGUSR1 open-sign
@@ -215,7 +266,7 @@ PATH=$PATH:/root/.nvm/versions/node/v18.17.1/bin
 You may need to restart the `cron` service after editing:
 
 ```sh
-/etc/init.d/cron restart
+sudo /etc/init.d/cron restart
 ```
 
 ## Adding more images
@@ -233,8 +284,6 @@ Transparent PNGs are supported (the transparency is treated as black).
 If you add new images, they won't be registered by the application until you restart the application.
 
 ```sh
-sudo -s
-cd /home/pi/open-sign
-nvm use
-pm2 restart ecosystem.config.js --env production
+sudo -i
+pm2 restart open-sign
 ```

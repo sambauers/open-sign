@@ -1,6 +1,7 @@
 import clamp from 'lodash/clamp'
 import isInteger from 'lodash/isInteger'
-import type { DeviceEventRaw, DeviceEvent } from './device'
+
+import type { DeviceEvent, DeviceEventRaw } from './device'
 import { Device } from './device'
 import { events } from './events'
 
@@ -35,7 +36,7 @@ interface Coordinates {
   y: number
 }
 
-interface MouseEvent extends DeviceEvent {
+export interface MouseEvent extends DeviceEvent {
   position?: Coordinates
 }
 
@@ -50,16 +51,19 @@ export class Mouse extends Device {
   constructor(eventActions: string[]) {
     super('/dev/input/by-id', /^usb-[a-zA-Z0-9_-]*?-event-mouse$/i)
 
-    this.eventActions = eventActions || [
-      'all',
-      'down',
-      'up',
-      'click',
-      'move',
-      'scrollup',
-      'scrolldown',
-      'scroll',
-    ]
+    this.eventActions =
+      eventActions.length > 0
+        ? eventActions
+        : [
+            'all',
+            'down',
+            'up',
+            'click',
+            'move',
+            'scrollup',
+            'scrolldown',
+            'scroll',
+          ]
 
     this.raw = { x: 0, y: 0 }
     this.tracked = { x: 0, y: 0 }
@@ -67,7 +71,9 @@ export class Mouse extends Device {
     this.y = 0
     this.tracking = 0
 
-    this.streamEvents.on('event', (ev) => this.parse(ev))
+    this.streamEvents.on('event', (ev: DeviceEventRaw) => {
+      this.parse(ev)
+    })
   }
 
   setMousePosition({

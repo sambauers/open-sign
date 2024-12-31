@@ -5,4 +5,4 @@ const config = {
   jsxSingleQuote: true,
 }
 
-module.exports = config
+export default config

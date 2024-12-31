@@ -1,7 +1,11 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+
 import { Brightness } from './lib/brightness'
 import { Moods } from './lib/moods'
+import type { MouseEvent } from './lib/mouse'
+import type { Pixel } from './lib/pixels'
 import { Screen } from './lib/screen'
+import { getCols, getRows } from './lib/utilities/dimensions'
 
 const PIDFILE = 'screen.pid'
 
@@ -31,62 +35,80 @@ try {
 try {
   writeFileSync(PIDFILE, String(process.pid))
 
-  console.log(`Screen process started: ${process.pid}`)
+  console.log(`Screen process started: ${process.pid.toString()}`)
+
+  const width = getCols(Number(process.env.LED_WIDTH))
+  const height = getRows(Number(process.env.LED_HEIGHT))
 
   const brightness = new Brightness()
-  const moods = new Moods()
-  const screen = new Screen()
+  const moods = new Moods(width, height)
+  const screen = new Screen(width, height)
 
-  process.on('message', ({ action, ev }) => {
-    switch (action) {
-      case 'on':
-        moods.touch()
-        break
+  process.on(
+    'message',
+    ({ action, ev }: { action: string; ev?: MouseEvent }) => {
+      switch (action) {
+        case 'on':
+          moods.touch()
+          break
 
-      case 'off':
-        screen.clear().sync()
-        break
+        case 'off':
+          screen.clear().sync()
+          break
 
-      case 'load':
-        moods.touch()
-        break
+        case 'load':
+          moods.touch()
+          break
 
-      case 'click':
-        if (ev.code === 'BTN_RIGHT') {
-          moods.decrement()
-        } else {
-          moods.increment()
+        case 'click':
+          if (ev?.code === 'BTN_RIGHT') {
+            moods.decrement()
+          } else {
+            moods.increment()
+          }
+          break
+
+        case 'scrollup':
+          brightness.increment()
+          break
+
+        case 'scrolldown':
+          brightness.decrement()
+          break
+
+        default:
+          break
+      }
+    },
+  )
+
+  moods.events.on('change', (mood: Pixel) => {
+    mood
+      .buffer()
+      .then((buffer) => {
+        if (!buffer) {
+          screen.clear().sync()
+          return
         }
-        break
-
-      case 'scrollup':
-        brightness.increment()
-        break
-
-      case 'scrolldown':
-        brightness.decrement()
-        break
-
-      default:
-        break
-    }
+        screen.clear().drawBuffer(buffer).sync()
+      })
+      .catch((error: unknown) => {
+        console.error('MOODS ERROR!!!')
+        console.error(error)
+      })
   })
 
-  moods.events.on('change', async (mood) => {
-    const buffer = await mood.buffer()
-    if (!buffer) {
-      screen.clear().sync()
-      return
-    }
-    screen.clear().drawBuffer(buffer).sync()
-  })
-
-  brightness.events.on('change', async () => {
-    await screen.control(
-      brightness,
-      screen.brightness.bind(screen),
-      moods.touch.bind(moods),
-    )
+  brightness.events.on('change', () => {
+    screen
+      .control(
+        brightness,
+        screen.brightness.bind(screen),
+        moods.touch.bind(moods),
+      )
+      .catch((error: unknown) => {
+        console.error('BRIGHTNESS ERROR!!!')
+        console.error(error)
+      })
   })
 
   setInterval(() => {

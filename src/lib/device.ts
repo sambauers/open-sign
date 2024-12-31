@@ -1,13 +1,14 @@
-import type { ReadStream } from 'node:fs'
-import { readdirSync, createReadStream } from 'node:fs'
 import EventEmitter from 'node:events'
+import type { ReadStream } from 'node:fs'
+import { createReadStream, readdirSync } from 'node:fs'
+
 import isInteger from 'lodash/isInteger'
 
-const bufferChunk = (buffer: string | Buffer, chunk_size: number): Buffer[] => {
+const bufferChunk = (buffer: string | Buffer, chunkSize: number): Buffer[] => {
   if (!Buffer.isBuffer(buffer)) {
     throw new TypeError('Buffer is required.')
   }
-  if (!isInteger(chunk_size) || chunk_size < 0) {
+  if (!isInteger(chunkSize) || chunkSize < 0) {
     throw new TypeError('Chunk size should be a positve number.')
   }
 
@@ -16,7 +17,7 @@ const bufferChunk = (buffer: string | Buffer, chunk_size: number): Buffer[] => {
   let i = 0
 
   while (i < len) {
-    result.push(buffer.slice(i, (i += chunk_size)))
+    result.push(buffer.subarray(i, (i += chunkSize)))
   }
 
   return result
@@ -65,11 +66,7 @@ export class Device {
   getDeviceFileNames() {
     const deviceFileNames = readdirSync(this.directory)
 
-    if (
-      !deviceFileNames ||
-      deviceFileNames instanceof Error ||
-      !deviceFileNames.length
-    ) {
+    if (deviceFileNames instanceof Error || !deviceFileNames.length) {
       console.log(`${this.directory} contains:`)
       console.log(deviceFileNames)
       throw new Error('No input devices found.')
@@ -96,13 +93,13 @@ export class Device {
     return device_path
   }
 
-  async createStream() {
+  createStream() {
     try {
-      this.stream = await createReadStream(this.path, {
+      this.stream = createReadStream(this.path, {
         flags: 'r',
         autoClose: true,
       })
-        .on('data', (buffer) =>
+        .on('data', (buffer) => {
           bufferChunk(buffer, 16).forEach((chunk) => {
             const ev: DeviceEventRaw = {
               time: {
@@ -114,8 +111,8 @@ export class Device {
               value: chunk.readInt32LE(12),
             }
             this.streamEvents.emit('event', ev)
-          }),
-        )
+          })
+        })
         .on('open', (fd) => {
           this.streamEvents.emit('open', fd)
         })

@@ -1,13 +1,15 @@
-import nconf from 'nconf'
-import { getSaveFile } from './utilities/get-save-file'
+import EventEmitter from 'node:events'
 import { readdirSync } from 'node:fs'
 import { join } from 'node:path'
-import EventEmitter from 'node:events'
-import toInteger from 'lodash/toInteger'
-import compact from 'lodash/compact'
-import clamp from 'lodash/clamp'
-import sharp from 'sharp'
+
 import color from 'color'
+import clamp from 'lodash/clamp'
+import compact from 'lodash/compact'
+import toInteger from 'lodash/toInteger'
+import nconf from 'nconf'
+import sharp from 'sharp'
+
+import { getSaveFile } from './utilities/get-save-file'
 
 nconf.file({ file: getSaveFile() })
 
@@ -145,7 +147,7 @@ export class Pixels {
     this.width = width
     this.height = height
     this.backgroundColor = backgroundColor || 'black'
-    this.filePaths = readdirSync(this.directoryPath) || []
+    this.filePaths = readdirSync(this.directoryPath)
     this.pixels = [
       ...(hasBlank ? [new Blank()] : []),
       ...compact(
@@ -163,6 +165,7 @@ export class Pixels {
       ),
     ]
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const savedIndex = nconf.get(`pixel:${this.name}:index`) ?? 0
     this.currentIndex = clamp(toInteger(savedIndex), 0, this.pixels.length - 1)
 

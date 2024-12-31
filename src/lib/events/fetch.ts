@@ -1,20 +1,20 @@
-import { join } from 'path'
 import { writeFileSync } from 'fs'
 import { camelCase, kebabCase } from 'lodash'
+import { join } from 'path'
 
 const PREFIXES = [
-  'INPUT_PROP',
-  'EV',
-  'SYN',
-  'KEY',
-  'BTN',
-  'REL',
   'ABS',
-  'SW',
-  'MSC',
+  'BTN',
+  'EV',
+  'INPUT_PROP',
+  'KEY',
   'LED',
+  'MSC',
+  'REL',
   'REP',
   'SND',
+  'SW',
+  'SYN',
 ]
 
 const EVENTS_URL =
@@ -29,7 +29,7 @@ interface Event {
 const fetchEvents = async () => {
   const eventsResponse = await fetch(EVENTS_URL)
 
-  if (!eventsResponse || !eventsResponse.ok || !eventsResponse.body) {
+  if (!eventsResponse.ok || !eventsResponse.body) {
     console.error('Could not fetch events from source.')
     process.exit(1)
   }
@@ -98,11 +98,10 @@ const fetchEvents = async () => {
     ]
 
     uniquePrefixEvents.forEach((event) => {
-      const line = [' ', `${event.code}:`, `'${event.name}'`]
       if (event.comment) {
-        line.push(`/* ${event.comment} */`)
+        lines.push(`  // ${event.comment}`)
       }
-      lines.push(`${line.join(' ')},`)
+      lines.push(`  ${event.code}: '${event.name}',`)
     })
 
     lines.push('}', '')
@@ -113,7 +112,10 @@ const fetchEvents = async () => {
   })
 }
 
-fetchEvents()
+fetchEvents().catch((error: unknown) => {
+  console.error('Error fetching events:', error)
+  process.exit(1)
+})
 
 console.log(`Evaluating index`)
 

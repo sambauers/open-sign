@@ -54,14 +54,16 @@ export const btn: Record<number, string> = {
   0x145: 'BTN_TOOL_FINGER',
   0x146: 'BTN_TOOL_MOUSE',
   0x147: 'BTN_TOOL_LENS',
-  0x148: 'BTN_TOOL_QUINTTAP' /* Five fingers on trackpad */,
+  // Five fingers on trackpad
+  0x148: 'BTN_TOOL_QUINTTAP',
   0x149: 'BTN_STYLUS3',
   0x14a: 'BTN_TOUCH',
   0x14b: 'BTN_STYLUS',
   0x14c: 'BTN_STYLUS2',
   0x14d: 'BTN_TOOL_DOUBLETAP',
   0x14e: 'BTN_TOOL_TRIPLETAP',
-  0x14f: 'BTN_TOOL_QUADTAP' /* Four fingers on trackpad */,
+  // Four fingers on trackpad
+  0x14f: 'BTN_TOOL_QUADTAP',
   0x150: 'BTN_GEAR_DOWN',
   0x151: 'BTN_GEAR_UP',
   0x220: 'BTN_DPAD_UP',

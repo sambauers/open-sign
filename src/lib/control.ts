@@ -1,9 +1,11 @@
-import nconf from 'nconf'
-import { getSaveFile } from './utilities/get-save-file'
-import { join } from 'node:path'
 import EventEmitter from 'node:events'
+import { join } from 'node:path'
+
 import clamp from 'lodash/clamp'
+import nconf from 'nconf'
+
 import { Pixel } from './pixels'
+import { getSaveFile } from './utilities/get-save-file'
 
 nconf.file({ file: getSaveFile() })
 
@@ -35,12 +37,11 @@ export class Control {
     this.upper = upper || 100
     this.stepSize = stepSize || 5
 
-    const saved_value = nconf.get(`control:${this.name}:value`)
-    if (saved_value === 0) {
-      this.value = 0
-    } else {
-      this.value = saved_value || startAt || 0
-    }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const savedValue = nconf.get(`control:${this.name}:value`)
+    const savedInteger =
+      typeof savedValue === 'number' ? savedValue : Number(savedValue)
+    this.value = isFinite(savedInteger) ? savedInteger : startAt || 0
 
     this.events = new EventEmitter()
   }
@@ -59,10 +60,10 @@ export class Control {
   setValue(newValue: number) {
     newValue = clamp(newValue, this.lower, this.upper)
     if (newValue !== this.value) {
-      const old_value = this.value
+      const oldValue = this.value
       this.value = newValue
       this.saveValue()
-      this.events.emit('change', this.value, old_value)
+      this.events.emit('change', this.value, oldValue)
     }
   }
 

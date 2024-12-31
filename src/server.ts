@@ -1,13 +1,15 @@
-import { Mouse } from './lib/mouse'
-import { isDevelopment } from './lib/utilities/is-environment'
-import forever from 'forever-monitor'
 import { join } from 'node:path'
 
-// IIFE
-;(async () => {
+import forever from 'forever-monitor'
+
+import type { MouseEvent } from './lib/mouse'
+import { Mouse } from './lib/mouse'
+import { isDevelopment } from './lib/utilities/is-environment'
+
+function main() {
   try {
     const mouse = new Mouse(['click', 'scrollup', 'scrolldown'])
-    await mouse.createStream()
+    mouse.createStream()
 
     const screen = isDevelopment()
       ? forever.start(['ts-node', join(__dirname, 'screen.ts')], {})
@@ -18,7 +20,7 @@ import { join } from 'node:path'
           watch: false,
         })
 
-    const RESTART_EVENTS = ['start', 'restart']
+    const RESTART_EVENTS = ['start', 'restart'] as const
     RESTART_EVENTS.forEach((ev) => {
       screen.on(ev, () => {
         console.log('Screen (re)started')
@@ -28,7 +30,7 @@ import { join } from 'node:path'
 
     screen.start()
 
-    const STOP_EVENTS = ['SIGINT', 'SIGTERM']
+    const STOP_EVENTS = ['SIGINT', 'SIGTERM'] as const
     STOP_EVENTS.forEach((ev) => {
       process.on(ev, () => {
         screen.stop()
@@ -44,19 +46,24 @@ import { join } from 'node:path'
       screen.send({ action: 'off' })
     })
 
-    mouse.events.on('click', (ev) => {
+    mouse.events.on('click', (ev: MouseEvent) => {
       screen.send({ action: 'click', ev })
     })
 
-    mouse.events.on('scrollup', (ev) => {
-      screen.send({ action: 'scrollup', ev })
+    mouse.events.on('scrollup', () => {
+      screen.send({ action: 'scrollup' })
     })
 
-    mouse.events.on('scrolldown', (ev) => {
-      screen.send({ action: 'scrolldown', ev })
+    mouse.events.on('scrolldown', () => {
+      screen.send({ action: 'scrolldown' })
     })
   } catch (error) {
     console.error('SERVER ERROR!!!')
     console.error(error)
   }
+}
+
+// IIFE
+;(() => {
+  main()
 })()

@@ -1,10 +1,12 @@
-import nconf from 'nconf'
-import { getSaveFile } from './utilities/get-save-file'
 import { join } from 'node:path'
-import type { MatrixOptions } from 'rpi-led-matrix'
+
 import clamp from 'lodash/clamp'
-import { LedMatrix, GpioMapping, Font } from 'rpi-led-matrix'
-import { Control } from './control'
+import nconf from 'nconf'
+import { Font, GpioMapping, LedMatrix } from 'rpi-led-matrix'
+
+import type { Control } from './control'
+import { getCols, getRows } from './utilities/dimensions'
+import { getSaveFile } from './utilities/get-save-file'
 
 nconf.file({ file: getSaveFile() })
 
@@ -13,17 +15,8 @@ const DEFAULT_FONT = new Font(
   join(process.cwd(), 'node_modules', 'rpi-led-matrix', 'fonts', '6x9.bdf'),
 )
 
-const getRows = (envRows?: string): MatrixOptions['rows'] => {
-  const rows = envRows ? Number(envRows) : 0
-  return ([16, 32, 64].includes(rows) ? rows : 16) as MatrixOptions['rows']
-}
-
-const getCols = (envCols?: string): MatrixOptions['cols'] => {
-  const cols = envCols ? Number(envCols) : 0
-  return ([16, 32, 40, 64].includes(cols) ? cols : 16) as MatrixOptions['cols']
-}
-
 const getBrightness = (): number => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const config = nconf.get('control:brightness:value')
 
   switch (typeof config) {
@@ -42,12 +35,12 @@ const getBrightness = (): number => {
 export class Screen extends LedMatrix {
   private controlWait?: NodeJS.Timeout
 
-  constructor() {
+  constructor(width: number, height: number) {
     super(
       {
         ...LedMatrix.defaultMatrixOptions(),
-        rows: getRows(process.env.LED_HEIGHT),
-        cols: getCols(process.env.LED_WIDTH),
+        cols: getCols(width),
+        rows: getRows(height),
         hardwareMapping: GpioMapping.AdafruitHatPwm,
         brightness: getBrightness(),
       },

@@ -115,11 +115,13 @@ export const key: Record<number, string> = {
   113: 'KEY_MUTE',
   114: 'KEY_VOLUMEDOWN',
   115: 'KEY_VOLUMEUP',
-  116: 'KEY_POWER' /* SC System Power Down */,
+  // SC System Power Down
+  116: 'KEY_POWER',
   117: 'KEY_KPEQUAL',
   118: 'KEY_KPPLUSMINUS',
   119: 'KEY_PAUSE',
-  120: 'KEY_SCALE' /* AL Compiz Scale (Expose) */,
+  // AL Compiz Scale (Expose)
+  120: 'KEY_SCALE',
   121: 'KEY_KPCOMMA',
   122: 'KEY_HANGEUL',
   123: 'KEY_HANJA',
@@ -127,38 +129,58 @@ export const key: Record<number, string> = {
   125: 'KEY_LEFTMETA',
   126: 'KEY_RIGHTMETA',
   127: 'KEY_COMPOSE',
-  128: 'KEY_STOP' /* AC Stop */,
+  // AC Stop
+  128: 'KEY_STOP',
   129: 'KEY_AGAIN',
-  130: 'KEY_PROPS' /* AC Properties */,
-  131: 'KEY_UNDO' /* AC Undo */,
+  // AC Properties
+  130: 'KEY_PROPS',
+  // AC Undo
+  131: 'KEY_UNDO',
   132: 'KEY_FRONT',
-  133: 'KEY_COPY' /* AC Copy */,
-  134: 'KEY_OPEN' /* AC Open */,
-  135: 'KEY_PASTE' /* AC Paste */,
-  136: 'KEY_FIND' /* AC Search */,
-  137: 'KEY_CUT' /* AC Cut */,
-  138: 'KEY_HELP' /* AL Integrated Help Center */,
-  139: 'KEY_MENU' /* Menu (show menu) */,
-  140: 'KEY_CALC' /* AL Calculator */,
+  // AC Copy
+  133: 'KEY_COPY',
+  // AC Open
+  134: 'KEY_OPEN',
+  // AC Paste
+  135: 'KEY_PASTE',
+  // AC Search
+  136: 'KEY_FIND',
+  // AC Cut
+  137: 'KEY_CUT',
+  // AL Integrated Help Center
+  138: 'KEY_HELP',
+  // Menu (show menu)
+  139: 'KEY_MENU',
+  // AL Calculator
+  140: 'KEY_CALC',
   141: 'KEY_SETUP',
-  142: 'KEY_SLEEP' /* SC System Sleep */,
-  143: 'KEY_WAKEUP' /* System Wake Up */,
-  144: 'KEY_FILE' /* AL Local Machine Browser */,
+  // SC System Sleep
+  142: 'KEY_SLEEP',
+  // System Wake Up
+  143: 'KEY_WAKEUP',
+  // AL Local Machine Browser
+  144: 'KEY_FILE',
   145: 'KEY_SENDFILE',
   146: 'KEY_DELETEFILE',
   147: 'KEY_XFER',
   148: 'KEY_PROG1',
   149: 'KEY_PROG2',
-  150: 'KEY_WWW' /* AL Internet Browser */,
+  // AL Internet Browser
+  150: 'KEY_WWW',
   151: 'KEY_MSDOS',
-  152: 'KEY_COFFEE' /* AL Terminal Lock/Screensaver */,
-  153: 'KEY_ROTATE_DISPLAY' /* Display orientation for e.g. tablets */,
+  // AL Terminal Lock/Screensaver
+  152: 'KEY_COFFEE',
+  // Display orientation for e.g. tablets
+  153: 'KEY_ROTATE_DISPLAY',
   154: 'KEY_CYCLEWINDOWS',
   155: 'KEY_MAIL',
-  156: 'KEY_BOOKMARKS' /* AC Bookmarks */,
+  // AC Bookmarks
+  156: 'KEY_BOOKMARKS',
   157: 'KEY_COMPUTER',
-  158: 'KEY_BACK' /* AC Back */,
-  159: 'KEY_FORWARD' /* AC Forward */,
+  // AC Back
+  158: 'KEY_BACK',
+  // AC Forward
+  159: 'KEY_FORWARD',
   160: 'KEY_CLOSECD',
   161: 'KEY_EJECTCD',
   162: 'KEY_EJECTCLOSECD',
@@ -168,20 +190,27 @@ export const key: Record<number, string> = {
   166: 'KEY_STOPCD',
   167: 'KEY_RECORD',
   168: 'KEY_REWIND',
-  169: 'KEY_PHONE' /* Media Select Telephone */,
+  // Media Select Telephone
+  169: 'KEY_PHONE',
   170: 'KEY_ISO',
-  171: 'KEY_CONFIG' /* AL Consumer Control Configuration */,
-  172: 'KEY_HOMEPAGE' /* AC Home */,
-  173: 'KEY_REFRESH' /* AC Refresh */,
-  174: 'KEY_EXIT' /* AC Exit */,
+  // AL Consumer Control Configuration
+  171: 'KEY_CONFIG',
+  // AC Home
+  172: 'KEY_HOMEPAGE',
+  // AC Refresh
+  173: 'KEY_REFRESH',
+  // AC Exit
+  174: 'KEY_EXIT',
   175: 'KEY_MOVE',
   176: 'KEY_EDIT',
   177: 'KEY_SCROLLUP',
   178: 'KEY_SCROLLDOWN',
   179: 'KEY_KPLEFTPAREN',
   180: 'KEY_KPRIGHTPAREN',
-  181: 'KEY_NEW' /* AC New */,
-  182: 'KEY_REDO' /* AC Redo/Repeat */,
+  // AC New
+  181: 'KEY_NEW',
+  // AC Redo/Repeat
+  182: 'KEY_REDO',
   183: 'KEY_F13',
   184: 'KEY_F14',
   185: 'KEY_F15',
@@ -198,13 +227,16 @@ export const key: Record<number, string> = {
   201: 'KEY_PAUSECD',
   202: 'KEY_PROG3',
   203: 'KEY_PROG4',
-  204: 'KEY_ALL_APPLICATIONS' /* AC Desktop Show All Applications */,
+  // AC Desktop Show All Applications
+  204: 'KEY_ALL_APPLICATIONS',
   205: 'KEY_SUSPEND',
-  206: 'KEY_CLOSE' /* AC Close */,
+  // AC Close
+  206: 'KEY_CLOSE',
   207: 'KEY_PLAY',
   208: 'KEY_FASTFORWARD',
   209: 'KEY_BASSBOOST',
-  210: 'KEY_PRINT' /* AC Print */,
+  // AC Print
+  210: 'KEY_PRINT',
   211: 'KEY_HP',
   212: 'KEY_CAMERA',
   213: 'KEY_SOUND',
@@ -213,90 +245,126 @@ export const key: Record<number, string> = {
   216: 'KEY_CHAT',
   217: 'KEY_SEARCH',
   218: 'KEY_CONNECT',
-  219: 'KEY_FINANCE' /* AL Checkbook/Finance */,
+  // AL Checkbook/Finance
+  219: 'KEY_FINANCE',
   220: 'KEY_SPORT',
   221: 'KEY_SHOP',
   222: 'KEY_ALTERASE',
-  223: 'KEY_CANCEL' /* AC Cancel */,
+  // AC Cancel
+  223: 'KEY_CANCEL',
   224: 'KEY_BRIGHTNESSDOWN',
   225: 'KEY_BRIGHTNESSUP',
   226: 'KEY_MEDIA',
-  227: 'KEY_SWITCHVIDEOMODE' /* Cycle between available video */,
+  // Cycle between available video
+  227: 'KEY_SWITCHVIDEOMODE',
   228: 'KEY_KBDILLUMTOGGLE',
   229: 'KEY_KBDILLUMDOWN',
   230: 'KEY_KBDILLUMUP',
-  231: 'KEY_SEND' /* AC Send */,
-  232: 'KEY_REPLY' /* AC Reply */,
-  233: 'KEY_FORWARDMAIL' /* AC Forward Msg */,
-  234: 'KEY_SAVE' /* AC Save */,
+  // AC Send
+  231: 'KEY_SEND',
+  // AC Reply
+  232: 'KEY_REPLY',
+  // AC Forward Msg
+  233: 'KEY_FORWARDMAIL',
+  // AC Save
+  234: 'KEY_SAVE',
   235: 'KEY_DOCUMENTS',
   236: 'KEY_BATTERY',
   237: 'KEY_BLUETOOTH',
   238: 'KEY_WLAN',
   239: 'KEY_UWB',
   240: 'KEY_UNKNOWN',
-  241: 'KEY_VIDEO_NEXT' /* drive next video source */,
-  242: 'KEY_VIDEO_PREV' /* drive previous video source */,
-  243: 'KEY_BRIGHTNESS_CYCLE' /* brightness up, after max is min */,
-  244: 'KEY_BRIGHTNESS_AUTO' /* Set Auto Brightness: manual */,
-  245: 'KEY_DISPLAY_OFF' /* display device to off state */,
-  246: 'KEY_WWAN' /* Wireless WAN (LTE, UMTS, GSM, etc.) */,
-  247: 'KEY_RFKILL' /* Key that controls all radios */,
-  248: 'KEY_MICMUTE' /* Mute / unmute the microphone */,
+  // drive next video source
+  241: 'KEY_VIDEO_NEXT',
+  // drive previous video source
+  242: 'KEY_VIDEO_PREV',
+  // brightness up, after max is min
+  243: 'KEY_BRIGHTNESS_CYCLE',
+  // Set Auto Brightness: manual
+  244: 'KEY_BRIGHTNESS_AUTO',
+  // display device to off state
+  245: 'KEY_DISPLAY_OFF',
+  // Wireless WAN (LTE, UMTS, GSM, etc.)
+  246: 'KEY_WWAN',
+  // Key that controls all radios
+  247: 'KEY_RFKILL',
+  // Mute / unmute the microphone
+  248: 'KEY_MICMUTE',
   0x160: 'KEY_OK',
   0x161: 'KEY_SELECT',
   0x162: 'KEY_GOTO',
   0x163: 'KEY_CLEAR',
   0x164: 'KEY_POWER2',
   0x165: 'KEY_OPTION',
-  0x166: 'KEY_INFO' /* AL OEM Features/Tips/Tutorial */,
+  // AL OEM Features/Tips/Tutorial
+  0x166: 'KEY_INFO',
   0x167: 'KEY_TIME',
   0x168: 'KEY_VENDOR',
   0x169: 'KEY_ARCHIVE',
-  0x16a: 'KEY_PROGRAM' /* Media Select Program Guide */,
+  // Media Select Program Guide
+  0x16a: 'KEY_PROGRAM',
   0x16b: 'KEY_CHANNEL',
   0x16c: 'KEY_FAVORITES',
   0x16d: 'KEY_EPG',
-  0x16e: 'KEY_PVR' /* Media Select Home */,
+  // Media Select Home
+  0x16e: 'KEY_PVR',
   0x16f: 'KEY_MHP',
   0x170: 'KEY_LANGUAGE',
   0x171: 'KEY_TITLE',
   0x172: 'KEY_SUBTITLE',
   0x173: 'KEY_ANGLE',
-  0x174: 'KEY_FULL_SCREEN' /* AC View Toggle */,
+  // AC View Toggle
+  0x174: 'KEY_FULL_SCREEN',
   0x175: 'KEY_MODE',
   0x176: 'KEY_KEYBOARD',
-  0x177: 'KEY_ASPECT_RATIO' /* HUTRR37: Aspect */,
-  0x178: 'KEY_PC' /* Media Select Computer */,
-  0x179: 'KEY_TV' /* Media Select TV */,
-  0x17a: 'KEY_TV2' /* Media Select Cable */,
-  0x17b: 'KEY_VCR' /* Media Select VCR */,
-  0x17c: 'KEY_VCR2' /* VCR Plus */,
-  0x17d: 'KEY_SAT' /* Media Select Satellite */,
+  // HUTRR37: Aspect
+  0x177: 'KEY_ASPECT_RATIO',
+  // Media Select Computer
+  0x178: 'KEY_PC',
+  // Media Select TV
+  0x179: 'KEY_TV',
+  // Media Select Cable
+  0x17a: 'KEY_TV2',
+  // Media Select VCR
+  0x17b: 'KEY_VCR',
+  // VCR Plus
+  0x17c: 'KEY_VCR2',
+  // Media Select Satellite
+  0x17d: 'KEY_SAT',
   0x17e: 'KEY_SAT2',
-  0x17f: 'KEY_CD' /* Media Select CD */,
-  0x180: 'KEY_TAPE' /* Media Select Tape */,
+  // Media Select CD
+  0x17f: 'KEY_CD',
+  // Media Select Tape
+  0x180: 'KEY_TAPE',
   0x181: 'KEY_RADIO',
-  0x182: 'KEY_TUNER' /* Media Select Tuner */,
+  // Media Select Tuner
+  0x182: 'KEY_TUNER',
   0x183: 'KEY_PLAYER',
   0x184: 'KEY_TEXT',
-  0x185: 'KEY_DVD' /* Media Select DVD */,
+  // Media Select DVD
+  0x185: 'KEY_DVD',
   0x186: 'KEY_AUX',
   0x187: 'KEY_MP3',
-  0x188: 'KEY_AUDIO' /* AL Audio Browser */,
-  0x189: 'KEY_VIDEO' /* AL Movie Browser */,
+  // AL Audio Browser
+  0x188: 'KEY_AUDIO',
+  // AL Movie Browser
+  0x189: 'KEY_VIDEO',
   0x18a: 'KEY_DIRECTORY',
   0x18b: 'KEY_LIST',
-  0x18c: 'KEY_MEMO' /* Media Select Messages */,
+  // Media Select Messages
+  0x18c: 'KEY_MEMO',
   0x18d: 'KEY_CALENDAR',
   0x18e: 'KEY_RED',
   0x18f: 'KEY_GREEN',
   0x190: 'KEY_YELLOW',
   0x191: 'KEY_BLUE',
-  0x192: 'KEY_CHANNELUP' /* Channel Increment */,
-  0x193: 'KEY_CHANNELDOWN' /* Channel Decrement */,
+  // Channel Increment
+  0x192: 'KEY_CHANNELUP',
+  // Channel Decrement
+  0x193: 'KEY_CHANNELDOWN',
   0x194: 'KEY_FIRST',
-  0x195: 'KEY_LAST' /* Recall Last */,
+  // Recall Last
+  0x195: 'KEY_LAST',
   0x196: 'KEY_AB',
   0x197: 'KEY_NEXT',
   0x198: 'KEY_RESTART',
@@ -307,36 +375,63 @@ export const key: Record<number, string> = {
   0x19d: 'KEY_DIGITS',
   0x19e: 'KEY_TEEN',
   0x19f: 'KEY_TWEN',
-  0x1a0: 'KEY_VIDEOPHONE' /* Media Select Video Phone */,
-  0x1a1: 'KEY_GAMES' /* Media Select Games */,
-  0x1a2: 'KEY_ZOOMIN' /* AC Zoom In */,
-  0x1a3: 'KEY_ZOOMOUT' /* AC Zoom Out */,
-  0x1a4: 'KEY_ZOOMRESET' /* AC Zoom */,
-  0x1a5: 'KEY_WORDPROCESSOR' /* AL Word Processor */,
-  0x1a6: 'KEY_EDITOR' /* AL Text Editor */,
-  0x1a7: 'KEY_SPREADSHEET' /* AL Spreadsheet */,
-  0x1a8: 'KEY_GRAPHICSEDITOR' /* AL Graphics Editor */,
-  0x1a9: 'KEY_PRESENTATION' /* AL Presentation App */,
-  0x1aa: 'KEY_DATABASE' /* AL Database App */,
-  0x1ab: 'KEY_NEWS' /* AL Newsreader */,
-  0x1ac: 'KEY_VOICEMAIL' /* AL Voicemail */,
-  0x1ad: 'KEY_ADDRESSBOOK' /* AL Contacts/Address Book */,
-  0x1ae: 'KEY_MESSENGER' /* AL Instant Messaging */,
-  0x1af: 'KEY_DISPLAYTOGGLE' /* Turn display (LCD) on and off */,
-  0x1b0: 'KEY_SPELLCHECK' /* AL Spell Check */,
-  0x1b1: 'KEY_LOGOFF' /* AL Logoff */,
+  // Media Select Video Phone
+  0x1a0: 'KEY_VIDEOPHONE',
+  // Media Select Games
+  0x1a1: 'KEY_GAMES',
+  // AC Zoom In
+  0x1a2: 'KEY_ZOOMIN',
+  // AC Zoom Out
+  0x1a3: 'KEY_ZOOMOUT',
+  // AC Zoom
+  0x1a4: 'KEY_ZOOMRESET',
+  // AL Word Processor
+  0x1a5: 'KEY_WORDPROCESSOR',
+  // AL Text Editor
+  0x1a6: 'KEY_EDITOR',
+  // AL Spreadsheet
+  0x1a7: 'KEY_SPREADSHEET',
+  // AL Graphics Editor
+  0x1a8: 'KEY_GRAPHICSEDITOR',
+  // AL Presentation App
+  0x1a9: 'KEY_PRESENTATION',
+  // AL Database App
+  0x1aa: 'KEY_DATABASE',
+  // AL Newsreader
+  0x1ab: 'KEY_NEWS',
+  // AL Voicemail
+  0x1ac: 'KEY_VOICEMAIL',
+  // AL Contacts/Address Book
+  0x1ad: 'KEY_ADDRESSBOOK',
+  // AL Instant Messaging
+  0x1ae: 'KEY_MESSENGER',
+  // Turn display (LCD) on and off
+  0x1af: 'KEY_DISPLAYTOGGLE',
+  // AL Spell Check
+  0x1b0: 'KEY_SPELLCHECK',
+  // AL Logoff
+  0x1b1: 'KEY_LOGOFF',
   0x1b2: 'KEY_DOLLAR',
   0x1b3: 'KEY_EURO',
-  0x1b4: 'KEY_FRAMEBACK' /* Consumer - transport controls */,
+  // Consumer - transport controls
+  0x1b4: 'KEY_FRAMEBACK',
   0x1b5: 'KEY_FRAMEFORWARD',
-  0x1b6: 'KEY_CONTEXT_MENU' /* GenDesc - system context menu */,
-  0x1b7: 'KEY_MEDIA_REPEAT' /* Consumer - transport control */,
-  0x1b8: 'KEY_10CHANNELSUP' /* 10 channels up (10+) */,
-  0x1b9: 'KEY_10CHANNELSDOWN' /* 10 channels down (10-) */,
-  0x1ba: 'KEY_IMAGES' /* AL Image Browser */,
-  0x1bc: 'KEY_NOTIFICATION_CENTER' /* Show/hide the notification center */,
-  0x1bd: 'KEY_PICKUP_PHONE' /* Answer incoming call */,
-  0x1be: 'KEY_HANGUP_PHONE' /* Decline incoming call */,
+  // GenDesc - system context menu
+  0x1b6: 'KEY_CONTEXT_MENU',
+  // Consumer - transport control
+  0x1b7: 'KEY_MEDIA_REPEAT',
+  // 10 channels up (10+)
+  0x1b8: 'KEY_10CHANNELSUP',
+  // 10 channels down (10-)
+  0x1b9: 'KEY_10CHANNELSDOWN',
+  // AL Image Browser
+  0x1ba: 'KEY_IMAGES',
+  // Show/hide the notification center
+  0x1bc: 'KEY_NOTIFICATION_CENTER',
+  // Answer incoming call
+  0x1bd: 'KEY_PICKUP_PHONE',
+  // Decline incoming call
+  0x1be: 'KEY_HANGUP_PHONE',
   0x1c0: 'KEY_DEL_EOL',
   0x1c1: 'KEY_DEL_EOS',
   0x1c2: 'KEY_INS_LINE',
@@ -373,8 +468,10 @@ export const key: Record<number, string> = {
   0x1f8: 'KEY_BRL_DOT8',
   0x1f9: 'KEY_BRL_DOT9',
   0x1fa: 'KEY_BRL_DOT10',
-  0x200: 'KEY_NUMERIC_0' /* used by phones, remote controls, */,
-  0x201: 'KEY_NUMERIC_1' /* and other keypads */,
+  // used by phones, remote controls,
+  0x200: 'KEY_NUMERIC_0',
+  // and other keypads
+  0x201: 'KEY_NUMERIC_1',
   0x202: 'KEY_NUMERIC_2',
   0x203: 'KEY_NUMERIC_3',
   0x204: 'KEY_NUMERIC_4',
@@ -385,13 +482,16 @@ export const key: Record<number, string> = {
   0x209: 'KEY_NUMERIC_9',
   0x20a: 'KEY_NUMERIC_STAR',
   0x20b: 'KEY_NUMERIC_POUND',
-  0x20c: 'KEY_NUMERIC_A' /* Phone key A - HUT Telephony 0xb9 */,
+  // Phone key A - HUT Telephony 0xb9
+  0x20c: 'KEY_NUMERIC_A',
   0x20d: 'KEY_NUMERIC_B',
   0x20e: 'KEY_NUMERIC_C',
   0x20f: 'KEY_NUMERIC_D',
   0x210: 'KEY_CAMERA_FOCUS',
-  0x211: 'KEY_WPS_BUTTON' /* WiFi Protected Setup key */,
-  0x212: 'KEY_TOUCHPAD_TOGGLE' /* Request switch touchpad on or off */,
+  // WiFi Protected Setup key
+  0x211: 'KEY_WPS_BUTTON',
+  // Request switch touchpad on or off
+  0x212: 'KEY_TOUCHPAD_TOGGLE',
   0x213: 'KEY_TOUCHPAD_ON',
   0x214: 'KEY_TOUCHPAD_OFF',
   0x215: 'KEY_CAMERA_ZOOMIN',
@@ -402,26 +502,52 @@ export const key: Record<number, string> = {
   0x21a: 'KEY_CAMERA_RIGHT',
   0x21b: 'KEY_ATTENDANT_ON',
   0x21c: 'KEY_ATTENDANT_OFF',
-  0x21d: 'KEY_ATTENDANT_TOGGLE' /* Attendant call on or off */,
-  0x21e: 'KEY_LIGHTS_TOGGLE' /* Reading light on or off */,
-  0x230: 'KEY_ALS_TOGGLE' /* Ambient light sensor */,
-  0x231: 'KEY_ROTATE_LOCK_TOGGLE' /* Display rotation lock */,
-  0x240: 'KEY_BUTTONCONFIG' /* AL Button Configuration */,
-  0x241: 'KEY_TASKMANAGER' /* AL Task/Project Manager */,
-  0x242: 'KEY_JOURNAL' /* AL Log/Journal/Timecard */,
-  0x243: 'KEY_CONTROLPANEL' /* AL Control Panel */,
-  0x244: 'KEY_APPSELECT' /* AL Select Task/Application */,
-  0x245: 'KEY_SCREENSAVER' /* AL Screen Saver */,
-  0x246: 'KEY_VOICECOMMAND' /* Listening Voice Command */,
-  0x247: 'KEY_ASSISTANT' /* AL Context-aware desktop assistant */,
-  0x248: 'KEY_KBD_LAYOUT_NEXT' /* AC Next Keyboard Layout Select */,
-  0x249: 'KEY_EMOJI_PICKER' /* Show/hide emoji picker (HUTRR101) */,
-  0x24a: 'KEY_DICTATE' /* Start or Stop Voice Dictation Session (HUTRR99) */,
-  0x24b: 'KEY_CAMERA_ACCESS_ENABLE' /* Enables programmatic access to camera devices. (HUTRR72) */,
-  0x24c: 'KEY_CAMERA_ACCESS_DISABLE' /* Disables programmatic access to camera devices. (HUTRR72) */,
-  0x24d: 'KEY_CAMERA_ACCESS_TOGGLE' /* Toggles the current state of the camera access control. (HUTRR72) */,
-  0x250: 'KEY_BRIGHTNESS_MIN' /* Set Brightness to Minimum */,
-  0x251: 'KEY_BRIGHTNESS_MAX' /* Set Brightness to Maximum */,
+  // Attendant call on or off
+  0x21d: 'KEY_ATTENDANT_TOGGLE',
+  // Reading light on or off
+  0x21e: 'KEY_LIGHTS_TOGGLE',
+  // Ambient light sensor
+  0x230: 'KEY_ALS_TOGGLE',
+  // Display rotation lock
+  0x231: 'KEY_ROTATE_LOCK_TOGGLE',
+  // Display refresh rate toggle
+  0x232: 'KEY_REFRESH_RATE_TOGGLE',
+  // AL Button Configuration
+  0x240: 'KEY_BUTTONCONFIG',
+  // AL Task/Project Manager
+  0x241: 'KEY_TASKMANAGER',
+  // AL Log/Journal/Timecard
+  0x242: 'KEY_JOURNAL',
+  // AL Control Panel
+  0x243: 'KEY_CONTROLPANEL',
+  // AL Select Task/Application
+  0x244: 'KEY_APPSELECT',
+  // AL Screen Saver
+  0x245: 'KEY_SCREENSAVER',
+  // Listening Voice Command
+  0x246: 'KEY_VOICECOMMAND',
+  // AL Context-aware desktop assistant
+  0x247: 'KEY_ASSISTANT',
+  // AC Next Keyboard Layout Select
+  0x248: 'KEY_KBD_LAYOUT_NEXT',
+  // Show/hide emoji picker (HUTRR101)
+  0x249: 'KEY_EMOJI_PICKER',
+  // Start or Stop Voice Dictation Session (HUTRR99)
+  0x24a: 'KEY_DICTATE',
+  // Enables programmatic access to camera devices. (HUTRR72)
+  0x24b: 'KEY_CAMERA_ACCESS_ENABLE',
+  // Disables programmatic access to camera devices. (HUTRR72)
+  0x24c: 'KEY_CAMERA_ACCESS_DISABLE',
+  // Toggles the current state of the camera access control. (HUTRR72)
+  0x24d: 'KEY_CAMERA_ACCESS_TOGGLE',
+  // Toggles the system bound accessibility UI/command (HUTRR116)
+  0x24e: 'KEY_ACCESSIBILITY',
+  // Toggles the system-wide "Do Not Disturb" control (HUTRR94)
+  0x24f: 'KEY_DO_NOT_DISTURB',
+  // Set Brightness to Minimum
+  0x250: 'KEY_BRIGHTNESS_MIN',
+  // Set Brightness to Maximum
+  0x251: 'KEY_BRIGHTNESS_MAX',
   0x260: 'KEY_KBDINPUTASSIST_PREV',
   0x261: 'KEY_KBDINPUTASSIST_NEXT',
   0x262: 'KEY_KBDINPUTASSIST_PREVGROUP',
@@ -432,7 +558,8 @@ export const key: Record<number, string> = {
   0x267: 'KEY_RIGHT_DOWN',
   0x268: 'KEY_LEFT_UP',
   0x269: 'KEY_LEFT_DOWN',
-  0x26a: 'KEY_ROOT_MENU' /* Show Device's Root Menu */,
+  // Show Device's Root Menu
+  0x26a: 'KEY_ROOT_MENU',
   0x26b: 'KEY_MEDIA_TOP_MENU',
   0x26c: 'KEY_NUMERIC_11',
   0x26d: 'KEY_NUMERIC_12',
@@ -441,7 +568,8 @@ export const key: Record<number, string> = {
   0x270: 'KEY_NEXT_FAVORITE',
   0x271: 'KEY_STOP_RECORD',
   0x272: 'KEY_PAUSE_RECORD',
-  0x273: 'KEY_VOD' /* Video on Demand */,
+  // Video on Demand
+  0x273: 'KEY_VOD',
   0x274: 'KEY_UNMUTE',
   0x275: 'KEY_FASTREVERSE',
   0x276: 'KEY_SLOWREVERSE',

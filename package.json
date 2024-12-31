@@ -1,8 +1,8 @@
 {
   "name": "open-sign",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "",
-  "packageManager": "pnpm@9.15.1",
+  "packageManager": "pnpm@9.15.2",
   "scripts": {
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,25 +22,28 @@
     "sharp": "0.33.5"
   },
   "devDependencies": {
+    "@eslint/js": "9.17.0",
     "@tsconfig/node20": "20.1.4",
     "@types/color": "4.2.0",
-    "@types/eslint": "8.44.2",
+    "@types/eslint": "9.6.1",
     "@types/forever-monitor": "1.7.9",
-    "@types/lodash": "4.14.197",
-    "@types/nconf": "0.10.3",
+    "@types/lodash": "4.17.13",
+    "@types/nconf": "0.10.7",
     "@types/node": "20.17.10",
-    "@typescript-eslint/eslint-plugin": "6.3.0",
-    "@typescript-eslint/parser": "6.3.0",
-    "eslint": "8.47.0",
+    "eslint": "9.17.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.0.0",
-    "prettier": "3.0.1",
+    "eslint-plugin-import-x": "4.6.1",
+    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-simple-import-sort": "12.1.1",
+    "globals": "15.14.0",
+    "prettier": "3.4.2",
     "ts-node": "10.9.2",
-    "typescript": "5.1.6"
+    "typescript": "5.7.2",
+    "typescript-eslint": "8.19.0"
   },
   "pnpm": {
     "overrides": {
-      "chokidar": "3.5.3"
+      "chokidar": "4.0.3"
     }
   }
 }
